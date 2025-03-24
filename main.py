@@ -1,9 +1,20 @@
 from stats import word_count, character_count, sorted_dictionaries
+import sys
 
 def main():
-    # Inside main, call get_book_text with the path to frankenstein.txt
-    path = "books/frankenstein.txt"
+    #print("starting main function")
+    #print(f"sys.argv = {sys.argv}")
+
+    # Inside main, call get_book_text with the path to a book
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
+    #print("passed argument check")
+    path = sys.argv[1] 
+    #print(f"using path: {path}")
     book_content = get_book_text(path)
+    #print(f"book content length: {len(book_content)} characters")
     
     # Get word count
     word_cnt = word_count(book_content)
